@@ -1,7 +1,8 @@
-package example.others
+package definition
 
-import definition.ContravariantFunctor
-
+/**
+ *  just type class
+ */
 trait PrettyString[A] extends ContravariantFunctor[PrettyString] {
   def prettify(a: A): String
 

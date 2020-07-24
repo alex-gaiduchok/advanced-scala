@@ -1,4 +1,4 @@
-package example.collections
+package example.instances
 
 import definition.{ApplicativeFunctor, Functor}
 
