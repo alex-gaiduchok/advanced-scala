@@ -2,7 +2,9 @@ lazy val root = (project in file("."))
   .aggregate(core, functors)
 
 lazy val core = (project in file("core"))
-//  .settings(libraryDependencies ++= Seq("org.typelevel" %% "cats-effect" % "2.1.3"))
+  .settings(libraryDependencies ++= Seq(
+    "org.typelevel" %% "cats-effect" % "2.1.3"
+  ))
   .settings(CommonSettings.settings)
 
 lazy val monoids = (project in file("monoids"))
