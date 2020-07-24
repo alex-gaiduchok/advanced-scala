@@ -1,6 +1,6 @@
 package example.collections
 
-import definition.{ApplicativeFunctor, ContravariantFunctor, Functor}
+import definition.{ApplicativeFunctor, Functor}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -19,8 +19,11 @@ trait ListFunctors {
 
   implicit val listApplicative: ApplicativeFunctor[List] = new ApplicativeFunctor[List] {
     override def pure[A](v: A): List[A] = List(v)
-    override def ap[A, B](ff: List[A => B])(fa: List[A]): List[B] = fa.flatMap(a => ff.map(func => func(a)))
-    override def map[A, B](fa: List[A])(f: A => B): List[B] = ap(pure(f))(fa)
-  }
 
+    override def ap[A, B](ff: List[A => B])(fa: List[A]): List[B] =
+      fa.flatMap(a => ff.map(func => func(a)))
+
+    override def map[A, B](fa: List[A])(f: A => B): List[B] =
+      ap(pure(f))(fa)
+  }
 }
