@@ -1,6 +1,6 @@
 package example
 
-import definition.Functor
+import definition.{Functor, PrettyString}
 import example.instances.{EitherBifunctor, ListFunctors, PrettyStringInstances}
 
 object Main extends App with ListFunctors with PrettyStringInstances with  EitherBifunctor {
@@ -14,4 +14,8 @@ object Main extends App with ListFunctors with PrettyStringInstances with  Eithe
   val e2 = e.bimap(_.toUpperCase(), _ * 42)
   println(e2)
 
+  implicit val strPrettifier: PrettyString[String] =
+    PrettyString.contramap(_.toLong)
+
+  println(PrettyString.prettify("22"))
 }
