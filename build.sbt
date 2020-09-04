@@ -14,3 +14,7 @@ lazy val monoids = (project in file("monoids"))
 lazy val functors = (project in file("functors"))
   .settings(CommonSettings.settings)
   .dependsOn(core)
+
+lazy val monads = (project in file("monads"))
+  .settings(CommonSettings.settings)
+  .dependsOn(core)
